@@ -3,55 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Critical System Update Required</title>
+    <title>Critical Mission: S & Kartikeya</title>
     <style>
-        body { font-family: 'Courier New', Courier, monospace; background-color: #0d1117; color: #58a6ff; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; overflow: hidden; }
-        .container { text-align: center; border: 1px solid #30363d; padding: 2rem; border-radius: 8px; background: #161b22; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        h1 { color: #f85149; }
-        .data-log { text-align: left; font-size: 0.9rem; margin-bottom: 1.5rem; color: #8b949e; }
-        .stats { color: #79c0ff; font-weight: bold; }
-        button { background-color: #238636; color: white; border: none; padding: 15px 30px; font-size: 1.2rem; border-radius: 6px; cursor: pointer; transition: transform 0.2s; margin: 10px; }
-        button:hover { background-color: #2ea043; transform: scale(1.05); }
-        #no-btn { background-color: #da3633; position: absolute; } /* Sigma move: The 'No' button will dodge the mouse */
-        .heart { color: #f85149; font-size: 5rem; }
+        body { font-family: 'Georgia', serif; background-color: #0d1117; color: #c9d1d9; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; text-align: center; overflow-x: hidden; }
+        .page { display: none; max-width: 600px; padding: 30px; animation: fadeIn 1s; position: relative; }
+        .active { display: block; }
+        h1 { color: #58a6ff; font-family: 'Courier New', monospace; font-size: 1.5rem; }
+        .media-frame { width: 100%; border-radius: 15px; margin: 20px auto; background-color: #161b22; overflow: hidden; border: 2px solid #30363d; }
+        .media-frame img, .media-frame video { width: 100%; display: block; }
+        .story-text { font-size: 1.2rem; line-height: 1.8; font-style: italic; color: #f0f6fc; }
+        .clock-container { background: #161b22; padding: 20px; border-radius: 10px; margin: 20px 0; border: 1px solid #58a6ff; }
+        #clock { font-family: 'Courier New', monospace; font-size: 1.2rem; color: #3fb950; font-weight: bold; }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; margin: 20px 0; }
+        .gallery img { width: 100%; border-radius: 8px; height: 150px; object-fit: cover; border: 1px solid #30363d; }
+        button { background-color: #238636; color: white; border: none; padding: 15px 30px; font-size: 1.1rem; border-radius: 50px; cursor: pointer; transition: 0.3s; margin: 10px; }
+        #yes-btn:hover { transform: scale(1.4); background-color: #2ea043; }
+        #no-btn { background-color: #da3633; position: absolute; white-space: nowrap; z-index: 1000; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="heart">♥</div>
-    <h1>PROPOSAL_DEPLOYMENT_V1.0</h1>
-    
-    <div class="data-log">
-        [INFO] Initializing Heartbeat_Sensor.exe... <span class="stats">CONNECTED</span><br>
-        [INFO] Checking Long-Term Compatibility... <span class="stats">99.9% MATCH</span><br>
-        [INFO] Analyzing United Airlines level reliability... <span class="stats">VERIFIED</span><br>
-        [WARN] System detected critical levels of "Loneliness" without User: HER.
+    <div id="page1" class="page active">
+        <h1>[LOG: 11 SEP 2025]</h1>
+        <p class="story-text">Something really strange happened on this day...</p>
+        <p class="story-text">A boy sent a friend request on Snapchat to a girl with the username <b>S</b>.</p>
+        <div class="media-frame">
+            <img src="http://googleusercontent.com/image_collection/image_retrieval/15835615133535266780_0" alt="Animated Sea Otter with Ice">
+        </div>
+        <p class="story-text">...Turns out that girl was a sea otter.</p>
+        <button onclick="nextPage(2)">Continue...</button>
     </div>
 
-    <p style="color: white; font-size: 1.3rem;">
-        The data is in. The pipeline is clear.<br>
-        <b>Will you be my forever MLOps partner?</b>
-    </p>
+    <div id="page2" class="page">
+        <h1>FIRST DATE: 13 SEP 2025</h1>
+        <div class="media-frame">
+            <video controls>
+                <source src="first_date.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <p class="story-text">
+            On that day, the girl held his hand and the boy just melted away... <br><br>
+            That holding hand was a hug, a kiss—like the first time a maiden is touched by a knight.
+        </p>
+        <button onclick="nextPage(3)">Our Journey...</button>
+    </div>
 
-    <button onclick="accepted()">YES (Merge to Main)</button>
-    <button id="no-btn" onmouseover="moveButton()">NO (Error 404)</button>
-</div>
+    <div id="page3" class="page">
+        <h1>THE STORY SO FAR</h1>
+        <div class="gallery">
+            <img src="p1.jpg"> <img src="p2.jpg"> <img src="p3.jpg"> <img src="p4.jpg"> <img src="p5.jpg">
+        </div>
+        <div class="clock-container">
+            <p>Time elapsed since our journey began:</p>
+            <div id="clock">Calculating...</div>
+        </div>
+        <button onclick="nextPage(4)">Wait, there's more...</button>
+    </div>
 
-<script>
-    function accepted() {
-        alert("Success! Deployment Successful. Life-long partnership initialized. Love.db updated.");
-        window.location.href = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM2o0Zno4ZzRnd3p4N3p4N3p4N3p4N3p4N3p4N3p4N3p4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/lTQF0ODLLjhza/giphy.gif";
-    }
+    <div id="page4" class="page">
+        <h1>A FINAL PROPOSAL</h1>
+        <p class="story-text" style="font-size: 1.4rem;">
+            If you want to know the story ahead... <br>
+            <b>Accept the deal below.</b>
+        </p>
+        <div style="height: 150px; padding-top: 50px;">
+            <button id="yes-btn" onclick="accepted()">I ACCEPT</button>
+            <button id="no-btn" onmouseover="moveButton()" onclick="moveButton()">REJECT DEAL</button>
+        </div>
+    </div>
 
-    function moveButton() {
-        var btn = document.getElementById('no-btn');
-        var x = Math.random() * (window.innerWidth - btn.offsetWidth);
-        var y = Math.random() * (window.innerHeight - btn.offsetHeight);
-        btn.style.left = x + 'px';
-        btn.style.top = y + 'px';
-    }
-</script>
+    <script>
+        function nextPage(pageNum) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById('page' + pageNum).classList.add('active');
+            if(pageNum === 3) startClock();
+        }
 
+        function startClock() {
+            const startDate = new Date("September 13, 2025 08:50:00").getTime();
+            setInterval(function() {
+                const now = new Date().getTime();
+                const diff = now - startDate;
+
+                const months = Math.floor(diff / (1000 * 60 * 60 * 24 * 30.44));
+                const days = Math.floor((diff % (1000 * 60 * 60 * 24 * 30.44)) / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+                document.getElementById("clock").innerHTML = 
+                    months + " Months " + days + " Days " + hours + "h " + mins + "m " + secs + "s";
+            }, 1000);
+        }
+
+        function moveButton() {
+            const btn = document.getElementById('no-btn');
+            const x = Math.random() * (window.innerWidth - btn.offsetWidth - 100);
+            const y = Math.random() * (window.innerHeight - btn.offsetHeight - 100);
+            btn.style.left = x + 'px';
+            btn.style.top = y + 'px';
+        }
+
+        function accepted() {
+            alert("Deal accepted! ❤️ The story continues forever.");
+            window.location.href = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM2o0Zno4ZzRnd3p4N3p4N3p4N3p4N3p4N3p4N3p4N3p4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/lTQF0ODLLjhza/giphy.gif";
+        }
+    </script>
 </body>
 </html>
